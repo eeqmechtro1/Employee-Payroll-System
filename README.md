@@ -1,5 +1,3 @@
-# Employee-Payroll-System
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -35,6 +33,7 @@ void mainMenu();
 void generateSampleData();
 
 bool authenticateESP32();
+void displayAuthenticationSuccess();
 
 // ==================== DISPLAY UTILITIES ====================
 
@@ -74,6 +73,31 @@ void printInfo(const string& msg) {
 void pauseScreen() {
     cout << "\n  Press any key to continue...";
     system("pause > nul");
+}
+
+// ==================== ESP32 AUTHENTICATION SUCCESS ====================
+
+void displayAuthenticationSuccess() {
+    clearScreen();
+    
+    printHeader("ESP32 AUTHENTICATION");
+    
+    cout << "\n";
+    cout << "  +------------------------------------------------------------------------------+\n";
+    cout << "  ¦" << setw(79) << left << ("  ESP Authentication Successful") << "¦\n";
+    cout << "  +------------------------------------------------------------------------------+\n";
+    
+    cout << "\n  Status           : CONNECTED\n";
+    cout << "  Authentication   :  VERIFIED\n";
+    cout << "  Device           : ESP32\n";
+    cout << "  Security Key     : HEXA_3\n";
+    cout << "  Access Level     : FULL ACCESS\n";
+    
+    cout << "\n  +------------------------------------------------------------------------------+\n";
+    
+    cout << "\n  System initializing...\n";
+    
+    Sleep(2000);
 }
 
 // ==================== ESP32 AUTHENTICATION ====================
@@ -184,6 +208,8 @@ int main() {
 
         return 0;
     }
+
+    displayAuthenticationSuccess();
 
     initializeDatabase();
 
